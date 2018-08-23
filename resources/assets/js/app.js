@@ -20,8 +20,10 @@ Vue.use(ElementUI, { locale })
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('example-component', require('./components/ExampleComponent.vue'));
+Vue.component('navbar', require('./components/NavBar.vue'));
+Vue.component('banner', require('./components/BannerComponent.vue'));
 Vue.component('booking', require('./components/BookingComponent.vue'));
+Vue.component('bottom', require('./components/BottomComponent.vue'));
 
 const app = new Vue({
     el: '#app'

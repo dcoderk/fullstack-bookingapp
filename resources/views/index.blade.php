@@ -14,7 +14,10 @@
     <body>
         <div class="flex-center position-ref full-height">
             <div class="content" id="app">
+               <navbar></navbar>  
+               <banner></banner>
                <booking></booking>
+               <bottom></bottom>   
             </div>
         </div>
 

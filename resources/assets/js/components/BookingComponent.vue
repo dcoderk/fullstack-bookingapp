@@ -44,8 +44,10 @@
                      <div class="row">
                         <div class="col-2">1</div>
                         <div class="col-3">{{formLabelAlign.name}}</div>
-                        <div class="col-6">{{bookdate(moment().format('MMMM Do YYYY'))}}</div>
-                        <p>{{formLabelAlign.message}}</p>
+                        <div class="col-6">{{bookdate}}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12"> <p>{{formLabelAlign.message}}</p></div>
                     </div>
                 </div>
             </div>

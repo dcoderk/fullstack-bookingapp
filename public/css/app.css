@@ -10477,3 +10477,26 @@ a.text-dark:focus {
           box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
 
+.topmenu {
+  margin-top: 10px;
+}
+
+span.logo img {
+  height: 30px;
+}
+
+.hero-banner img {
+  height: 400px;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  margin-bottom: 20px;
+}
+
+.footer {
+  background: #050d38;
+  color: #fff;
+  padding: 20px;
+  margin-top: 40px;
+}
+
