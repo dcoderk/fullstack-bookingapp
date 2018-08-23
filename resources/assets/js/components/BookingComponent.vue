@@ -36,16 +36,16 @@
                 <div class="col-12">
                     <h2 class="text-center">Booking List</h2>
                     <div class="row">
-                        <div class="col-3">#</div>
-                        <div class="col-4">Name</div>
-                        <div class="col-5">Dates</div>
+                        <div class="col-2">#</div>
+                        <div class="col-3">Name</div>
+                        <div class="col-6">Dates</div>
                     </div>
                      <hr>
                      <div class="row">
-                        <div class="col-3">1</div>
-                        <div class="col-4">John Michael</div>
-                        <div class="col-5">2018-08-24 - 2018-08-30</div>
-                        <p>Li Europan lingues es membres del sam familie. Lor separat existentie es un myth. Por scientie, musica, sport etc, litot Europa usa li sam vocabular. </p>
+                        <div class="col-2">1</div>
+                        <div class="col-3">{{formLabelAlign.name}}</div>
+                        <div class="col-6">{{bookdate(moment().format('MMMM Do YYYY'))}}</div>
+                        <p>{{formLabelAlign.message}}</p>
                     </div>
                 </div>
             </div>

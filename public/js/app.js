@@ -95501,7 +95501,27 @@ var render = function() {
           ])
         ]),
         _vm._v(" "),
-        _vm._m(1)
+        _c("div", { staticClass: "col-12" }, [
+          _c("h2", { staticClass: "text-center" }, [_vm._v("Booking List")]),
+          _vm._v(" "),
+          _vm._m(1),
+          _vm._v(" "),
+          _c("hr"),
+          _vm._v(" "),
+          _c("div", { staticClass: "row" }, [
+            _c("div", { staticClass: "col-2" }, [_vm._v("1")]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-3" }, [
+              _vm._v(_vm._s(_vm.formLabelAlign.name))
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-6" }, [
+              _vm._v(_vm._s(_vm.bookdate(_vm.moment().format("MMMM Do YYYY"))))
+            ]),
+            _vm._v(" "),
+            _c("p", [_vm._v(_vm._s(_vm.formLabelAlign.message))])
+          ])
+        ])
       ])
     ])
   ])
@@ -95531,34 +95551,12 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-12" }, [
-      _c("h2", { staticClass: "text-center" }, [_vm._v("Booking List")]),
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-2" }, [_vm._v("#")]),
       _vm._v(" "),
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-3" }, [_vm._v("#")]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-4" }, [_vm._v("Name")]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-5" }, [_vm._v("Dates")])
-      ]),
+      _c("div", { staticClass: "col-3" }, [_vm._v("Name")]),
       _vm._v(" "),
-      _c("hr"),
-      _vm._v(" "),
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-3" }, [_vm._v("1")]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-4" }, [_vm._v("John Michael")]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-5" }, [
-          _vm._v("2018-08-24 - 2018-08-30")
-        ]),
-        _vm._v(" "),
-        _c("p", [
-          _vm._v(
-            "Li Europan lingues es membres del sam familie. Lor separat existentie es un myth. Por scientie, musica, sport etc, litot Europa usa li sam vocabular. "
-          )
-        ])
-      ])
+      _c("div", { staticClass: "col-6" }, [_vm._v("Dates")])
     ])
   }
 ]
