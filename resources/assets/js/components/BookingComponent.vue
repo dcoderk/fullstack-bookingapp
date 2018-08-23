@@ -9,20 +9,44 @@
                 </div>
                 <div class="col-12">
                     <h2 class="text-center">Make a Booking</h2>
-                    <form>
-                    <div class="form-group row">
-                        <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
-                        <div class="col-sm-10">
-                        <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="email@example.com">
-                        </div>
+                    <div class="row justify-content-center">
+                    <div class="col-9">
+                    <el-form :label-position="labelPosition" label-width="100px" :model="formLabelAlign">
+                        <el-form-item label="Name:">
+                            <el-input v-model="formLabelAlign.name"></el-input>
+                        </el-form-item>
+                        <el-form-item label="Your Dates:">
+                          <div class="block">
+                                <el-date-picker
+                                v-model="bookdate"
+                                type="daterange"
+                                start-placeholder="Start date"
+                                end-placeholder="End date">
+                                </el-date-picker>
+                          </div>
+                        </el-form-item>
+                        <el-form-item label="Message:">
+                            <el-input v-model="formLabelAlign.message"></el-input>
+                        </el-form-item>
+                    </el-form>
                     </div>
-                    <div class="form-group row">
-                        <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
-                        <div class="col-sm-10">
-                        <input type="password" class="form-control" id="inputPassword" placeholder="Password">
-                        </div>
+                    </div><!--row form-->
+                </div>
+
+                <div class="col-12">
+                    <h2 class="text-center">Booking List</h2>
+                    <div class="row">
+                        <div class="col-3">#</div>
+                        <div class="col-4">Name</div>
+                        <div class="col-5">Dates</div>
                     </div>
-                    </form>
+                     <hr>
+                     <div class="row">
+                        <div class="col-3">1</div>
+                        <div class="col-4">John Michael</div>
+                        <div class="col-5">2018-08-24 - 2018-08-30</div>
+                        <p>Li Europan lingues es membres del sam familie. Lor separat existentie es un myth. Por scientie, musica, sport etc, litot Europa usa li sam vocabular. </p>
+                    </div>
                 </div>
             </div>
         </div><!--.row-->
@@ -31,8 +55,15 @@
 
 <script>
     export default {
-        mounted() {
-            console.log('Component mounted.')
+       data() {
+            return {
+                labelPosition: 'right',
+                formLabelAlign: {
+                name: '',
+                message: ''
+                },
+                bookdate: ''
+            };
         }
     }
 </script>
