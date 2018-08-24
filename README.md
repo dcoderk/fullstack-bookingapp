@@ -20,7 +20,7 @@
 
 
 
-# To make the Laravel file work do the ff:
+### To make the Laravel file work do the ff:
 
 - Create a .env file from env.example
 - On your terminal run
