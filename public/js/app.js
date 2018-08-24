@@ -28773,7 +28773,7 @@ function required(rule, value, source, errors, options, type) {
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(78);
-module.exports = __webpack_require__(206);
+module.exports = __webpack_require__(203);
 
 
 /***/ }),
@@ -28811,9 +28811,9 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_0_element_ui___default.a, { locale: __WEBPACK_
  */
 
 Vue.component('navbar', __webpack_require__(194));
-Vue.component('banner', __webpack_require__(197));
-Vue.component('booking', __webpack_require__(200));
-Vue.component('bottom', __webpack_require__(203));
+Vue.component('banner', __webpack_require__(196));
+Vue.component('booking', __webpack_require__(198));
+Vue.component('bottom', __webpack_require__(201));
 
 var app = new Vue({
   el: '#app'
@@ -95174,7 +95174,7 @@ var normalizeComponent = __webpack_require__(25)
 /* script */
 var __vue_script__ = null
 /* template */
-var __vue_template__ = __webpack_require__(196)
+var __vue_template__ = __webpack_require__(195)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -95213,8 +95213,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 195 */,
-/* 196 */
+/* 195 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -95267,7 +95266,7 @@ if (false) {
 }
 
 /***/ }),
-/* 197 */
+/* 196 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
@@ -95275,7 +95274,7 @@ var normalizeComponent = __webpack_require__(25)
 /* script */
 var __vue_script__ = null
 /* template */
-var __vue_template__ = __webpack_require__(199)
+var __vue_template__ = __webpack_require__(197)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -95314,8 +95313,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 198 */,
-/* 199 */
+/* 197 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -95344,15 +95342,15 @@ if (false) {
 }
 
 /***/ }),
-/* 200 */
+/* 198 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(25)
 /* script */
-var __vue_script__ = __webpack_require__(201)
+var __vue_script__ = __webpack_require__(199)
 /* template */
-var __vue_template__ = __webpack_require__(202)
+var __vue_template__ = __webpack_require__(200)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -95391,7 +95389,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 201 */
+/* 199 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -95454,22 +95452,43 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
+            bookings: [],
             labelPosition: 'right',
-            formLabelAlign: {
+            booking: {
+                id: '',
                 name: '',
-                message: ''
+                message: '',
+                bookdate: ''
             },
-            bookdate: ''
+            booking_id: '',
+            pagination: {},
+            edit: false
         };
+    },
+    created: function created() {
+        this.fetchBookings();
+    },
+
+    methods: {
+        fetchBookings: function fetchBookings() {
+            var _this = this;
+
+            fetch('api/bookings').then(function (res) {
+                return res.json();
+            }).then(function (res) {
+                _this.bookings = res.data;
+            });
+        }
     }
 });
 
 /***/ }),
-/* 202 */
+/* 200 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -95494,8 +95513,7 @@ var render = function() {
                   {
                     attrs: {
                       "label-position": _vm.labelPosition,
-                      "label-width": "100px",
-                      model: _vm.formLabelAlign
+                      "label-width": "100px"
                     }
                   },
                   [
@@ -95505,11 +95523,11 @@ var render = function() {
                       [
                         _c("el-input", {
                           model: {
-                            value: _vm.formLabelAlign.name,
+                            value: _vm.booking.name,
                             callback: function($$v) {
-                              _vm.$set(_vm.formLabelAlign, "name", $$v)
+                              _vm.$set(_vm.booking, "name", $$v)
                             },
-                            expression: "formLabelAlign.name"
+                            expression: "booking.name"
                           }
                         })
                       ],
@@ -95528,11 +95546,11 @@ var render = function() {
                               "end-placeholder": "End date"
                             },
                             model: {
-                              value: _vm.bookdate,
+                              value: _vm.booking.bookdate,
                               callback: function($$v) {
-                                _vm.bookdate = $$v
+                                _vm.$set(_vm.booking, "bookdate", $$v)
                               },
-                              expression: "bookdate"
+                              expression: "booking.bookdate"
                             }
                           })
                         ],
@@ -95546,11 +95564,11 @@ var render = function() {
                       [
                         _c("el-input", {
                           model: {
-                            value: _vm.formLabelAlign.message,
+                            value: _vm.booking.message,
                             callback: function($$v) {
-                              _vm.$set(_vm.formLabelAlign, "message", $$v)
+                              _vm.$set(_vm.booking, "message", $$v)
                             },
-                            expression: "formLabelAlign.message"
+                            expression: "booking.message"
                           }
                         })
                       ],
@@ -95578,29 +95596,40 @@ var render = function() {
           ])
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "col-12 book-container" }, [
-          _c("h2", { staticClass: "text-center" }, [_vm._v("Booking List")]),
-          _vm._v(" "),
-          _vm._m(1),
-          _vm._v(" "),
-          _c("hr"),
-          _vm._v(" "),
-          _c("div", { staticClass: "row" }, [
-            _c("div", { staticClass: "col-2" }, [_vm._v("1")]),
+        _c(
+          "div",
+          { staticClass: "col-12 book-container" },
+          [
+            _c("h2", { staticClass: "text-center" }, [_vm._v("Booking List")]),
             _vm._v(" "),
-            _c("div", { staticClass: "col-3" }, [
-              _vm._v(_vm._s(_vm.formLabelAlign.name))
-            ]),
+            _vm._m(1),
             _vm._v(" "),
-            _c("div", { staticClass: "col-6" }, [_vm._v(_vm._s(_vm.bookdate))])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "row" }, [
-            _c("div", { staticClass: "col-12" }, [
-              _c("p", [_vm._v(_vm._s(_vm.formLabelAlign.message))])
-            ])
-          ])
-        ])
+            _c("hr"),
+            _vm._v(" "),
+            _vm._l(_vm.bookings, function(booking) {
+              return _c("div", { key: booking.id, staticClass: "row" }, [
+                _c("div", { staticClass: "col-2" }, [
+                  _vm._v(_vm._s(booking.id))
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-4" }, [
+                  _vm._v(_vm._s(booking.name))
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-5" }, [
+                  _vm._v(_vm._s(booking.bookdate))
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "row" }, [
+                  _c("div", { staticClass: "col-12" }, [
+                    _c("p", [_vm._v(_vm._s(booking.message))])
+                  ])
+                ])
+              ])
+            })
+          ],
+          2
+        )
       ])
     ])
   ])
@@ -95633,9 +95662,9 @@ var staticRenderFns = [
     return _c("div", { staticClass: "row" }, [
       _c("div", { staticClass: "col-2" }, [_vm._v("#")]),
       _vm._v(" "),
-      _c("div", { staticClass: "col-3" }, [_vm._v("Name")]),
+      _c("div", { staticClass: "col-4" }, [_vm._v("Name")]),
       _vm._v(" "),
-      _c("div", { staticClass: "col-6" }, [_vm._v("Dates")])
+      _c("div", { staticClass: "col-5" }, [_vm._v("Dates")])
     ])
   }
 ]
@@ -95649,7 +95678,7 @@ if (false) {
 }
 
 /***/ }),
-/* 203 */
+/* 201 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
@@ -95657,7 +95686,7 @@ var normalizeComponent = __webpack_require__(25)
 /* script */
 var __vue_script__ = null
 /* template */
-var __vue_template__ = __webpack_require__(205)
+var __vue_template__ = __webpack_require__(202)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -95696,8 +95725,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 204 */,
-/* 205 */
+/* 202 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -95734,7 +95762,7 @@ if (false) {
 }
 
 /***/ }),
-/* 206 */
+/* 203 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

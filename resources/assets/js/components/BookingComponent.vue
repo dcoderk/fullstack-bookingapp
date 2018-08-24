@@ -11,14 +11,14 @@
                     <h2 class="text-center">Make a Booking</h2>
                     <div class="row justify-content-center">
                     <div class="col-9">
-                    <el-form :label-position="labelPosition" label-width="100px" :model="formLabelAlign">
+                    <el-form :label-position="labelPosition"  label-width="100px">
                         <el-form-item label="Name:">
-                            <el-input v-model="formLabelAlign.name"></el-input>
+                            <el-input v-model="booking.name"></el-input>
                         </el-form-item>
                         <el-form-item label="Your Dates:">
                           <div class="block">
                                 <el-date-picker
-                                v-model="bookdate"
+                                v-model="booking.bookdate"
                                 type="daterange"
                                 start-placeholder="Start date"
                                 end-placeholder="End date">
@@ -26,7 +26,7 @@
                           </div>
                         </el-form-item>
                         <el-form-item label="Message:">
-                            <el-input v-model="formLabelAlign.message"></el-input>
+                            <el-input v-model="booking.message"></el-input>
                         </el-form-item>
                         <div class="float-right"><el-button type="primary" plain>PLACE BOOKING</el-button></div>  
                     </el-form>
@@ -38,18 +38,19 @@
                     <h2 class="text-center">Booking List</h2>
                     <div class="row">
                         <div class="col-2">#</div>
-                        <div class="col-3">Name</div>
-                        <div class="col-6">Dates</div>
+                        <div class="col-4">Name</div>
+                        <div class="col-5">Dates</div>
                     </div>
                      <hr>
-                     <div class="row">
-                        <div class="col-2">1</div>
-                        <div class="col-3">{{formLabelAlign.name}}</div>
-                        <div class="col-6">{{bookdate}}</div>
+                     <div class="row" v-for="booking in bookings" v-bind:key="booking.id">
+                        <div class="col-2">{{booking.id}}</div>
+                        <div class="col-4">{{booking.name}}</div>
+                        <div class="col-5">{{booking.bookdate}}</div>
+                        <div class="row">
+                            <div class="col-12"> <p>{{booking.message}}</p></div>
+                        </div>
                     </div>
-                    <div class="row">
-                        <div class="col-12"> <p>{{formLabelAlign.message}}</p></div>
-                    </div>
+                    
                 </div>
             </div>
         </div><!--.row-->
@@ -60,13 +61,31 @@
     export default {
        data() {
             return {
+                bookings:[],
                 labelPosition: 'right',
-                formLabelAlign: {
+                booking: {
+                id: '',
                 name: '',
-                message: ''
-                },
+                message: '',
                 bookdate: ''
-            };
+                },
+                booking_id: '',
+                pagination: {},
+                edit: false                
+            }
+        },
+
+        created() {
+            this.fetchBookings();
+        },
+        methods: {
+            fetchBookings() {
+                fetch('api/bookings')
+                  .then(res => res.json())
+                  .then(res => {
+                      this.bookings = res.data;
+                  })
+            }
         }
     }
 </script>

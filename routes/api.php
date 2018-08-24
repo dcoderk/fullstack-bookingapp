@@ -19,3 +19,15 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 // List all bookings
 Route::get('bookings', 'BookingController@index');
+
+// List single booking
+Route::get('booking/{id}', 'BookingController@show');
+
+// Crete new booking
+Route::post('booking', 'BookingController@store');
+
+// Update booking
+Route::put('booking', 'BookingController@store');
+
+// Delete booking
+Route::delete('booking/{id}', 'BookingController@destroy');

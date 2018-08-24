@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Booking;
 use Illuminate\Http\Request;
+use App\Booking;                                        // add this
+use App\Http\Resources\Booking as BookingResource;     // add this
 
 class BookingController extends Controller
 {
@@ -14,9 +15,10 @@ class BookingController extends Controller
      */
     public function index()
     {
-        $bookings = Booking::all();
+        $bookings = Booking::orderBy('created_at', 'desc')->paginate(5);
 
-        return response()->json($bookings);
+        return BookingResource::collection($bookings);
+        //return response()->json($bookings);
     }
 
     /**
