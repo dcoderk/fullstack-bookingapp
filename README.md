@@ -18,8 +18,16 @@
 
 ~ npm i element-ui -S   - adding Element UI
 
-~ npm run watch     -  to compile all asset
 
+
+# To make the Laravel file work do the ff:
+
+- Create a .env file from env.example
+- On your terminal run
+  $ php artisan key:generate
+
+- Then Run 
+  $ npm run watch     -  to compile all asset
 
 
 ### Technology Stack
