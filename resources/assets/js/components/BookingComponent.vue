@@ -7,7 +7,7 @@
                     <p class="text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at euismod felis, et lacinia risus. Interdum et malesuada fames ac ante ipsum primis in faucibus. </p>
                     <p class="text-center">Phasellus scelerisque laoreet elementum. Quisque orci erat, sagittis sed arcu sed, gravida ultrices est. Nunc maximus augue sed accumsan vestibulum. Duis mattis, quam vel hendrerit blandit, dolor odio convallis velit, sed gravida turpis lacus quis libero. Aliquam quis diam non libero fermentum molestie.</p>
                 </div>
-                <div class="col-12">
+                <div class="col-12 book-container">
                     <h2 class="text-center">Make a Booking</h2>
                     <div class="row justify-content-center">
                     <div class="col-9">
@@ -28,12 +28,13 @@
                         <el-form-item label="Message:">
                             <el-input v-model="formLabelAlign.message"></el-input>
                         </el-form-item>
+                        <div class="float-right"><el-button type="primary" plain>PLACE BOOKING</el-button></div>  
                     </el-form>
                     </div>
                     </div><!--row form-->
                 </div>
 
-                <div class="col-12">
+                <div class="col-12 book-container">
                     <h2 class="text-center">Booking List</h2>
                     <div class="row">
                         <div class="col-2">#</div>
