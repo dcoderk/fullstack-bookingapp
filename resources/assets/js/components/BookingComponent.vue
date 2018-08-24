@@ -49,9 +49,18 @@
                         <div class="row">
                             <div class="col-12"> <p>{{booking.message}}</p></div>
                         </div>
-                    </div>
-                    
+                    </div> 
                 </div>
+                <div class="float-right">
+                   <nav aria-label="Page navigation">
+                    <ul class="pagination">
+                        <li v-bind:class="[{disabled: !pagination.prev_page_url}]" class="page-item"><a class="page-link" href="#" @click.prevent="fetchBookings(pagination.prev_page_url)">Previous</a></li>
+                        <li class="disabled page-item"><a class="page-link" href="#">Page {{pagination.current_page}} of {{pagination.last_page}}</a></li>
+                        <li v-bind:class="[{disabled: !pagination.next_page_url}]" class="page-item"><a class="page-link" href="#" @click.prevent="fetchBookings(pagination.next_page_url)">Next</a></li>
+                    </ul>
+                    </nav>
+                </div>
+
             </div>
         </div><!--.row-->
     </div>
@@ -79,12 +88,29 @@
             this.fetchBookings();
         },
         methods: {
-            fetchBookings() {
-                fetch('api/bookings')
+            fetchBookings(page_url) {
+                // adding pagination
+                let vm = this;
+                page_url = page_url || 'api/bookings'
+                fetch(page_url)
                   .then(res => res.json())
                   .then(res => {
                       this.bookings = res.data;
+                      //pagination variable
+                      vm.makePagination(res.meta, res.links);
                   })
+                  .catch(err => console.log(err));
+            },
+            //pagination function
+            makePagination(meta, links) {
+                let pagination = {
+                    current_page: meta.current_page,
+                    last_page: meta.last_page,
+                    next_page_url: links.next,
+                    prev_page_url: links.prev
+                }
+
+                this.pagination = pagination;
             }
         }
     }
